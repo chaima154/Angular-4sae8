@@ -1,0 +1,7 @@
+<h3>Liste des Résidences</h3>
+<ul>
+  <li *ngFor="let residence of residences">
+    {{ residence.name }} - {{ residence.address }}
+    <button routerLink="/residences/{{ residence.id }}">Détails</button>
+  </li>
+</ul>

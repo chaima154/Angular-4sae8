@@ -1,0 +1,51 @@
+<h3>Liste des Résidences</h3>
+
+<!-- Champ de recherche -->
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="searchAddress"
+    placeholder="Rechercher par adresse..."
+    class="form-control"
+  />
+</div>
+
+<div class="container">
+  <div *ngFor="let item of getFilteredResidences()" class="residence-card">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" [src]="item.image" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ item.name }}</h5>
+        <p class="card-text">{{ item.address === 'inconnu' ? 'Adresse inconnue' : item.address }}</p>
+        
+        <!-- Gestion des statuts -->
+        <div [ngSwitch]="item.status">
+          <div *ngSwitchCase="'Disponible'" class="status disponible">
+            <i class="fa fa-check-circle"></i> Disponible
+          </div>
+          <div *ngSwitchCase="'Vendu'" class="status vendu">
+            <i class="fa fa-times-circle"></i> Déjà vendu
+          </div>
+          <div *ngSwitchCase="'En Construction'" class="status construction">
+            <i class="fa fa-tools"></i> En construction
+          </div>
+          <div *ngSwitchDefault>
+            <i class="fa fa-question-circle"></i> Statut inconnu
+          </div>
+        </div>
+
+        <!-- Bouton pour ajouter aux favoris -->
+        <button class="btn btn-success" (click)="addToFavorites(item)">Like</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Affichage des favoris -->
+<h3>Favoris</h3>
+<div *ngIf="favorites.length === 0">
+  <p>Aucune résidence dans les favoris.</p>
+</div>
+<ul *ngIf="favorites.length > 0">
+  <li *ngFor="let favorite of favorites">{{ favorite.name }} - {{ favorite.address }}</li>
+</ul>

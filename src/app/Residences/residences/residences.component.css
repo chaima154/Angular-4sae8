@@ -1,0 +1,33 @@
+.search-bar {
+    margin-bottom: 20px;
+  }
+  
+  .residence-card {
+    margin-bottom: 20px;
+  }
+  
+  .status {
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+  
+  .status.disponible {
+    color: green;
+  }
+  
+  .status.vendu {
+    color: red;
+  }
+  
+  .status.construction {
+    color: orange;
+  }
+  
+  .card {
+    margin-bottom: 20px;
+  }
+  
+  .btn-success {
+    margin-top: 10px;
+  }
+  
